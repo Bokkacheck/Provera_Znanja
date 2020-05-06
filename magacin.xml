@@ -1,1 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<magacin>
+  <aritakl>
+    <naziv sifra ="1">Automobil</naziv>
+    <datumIzrade>
+      <dan>14</dan>
+      <mesec>12</mesec>
+      <godina>2018</godina>
+    </datumIzrade>
+    <cena tip ="euro">12000</cena>
+    <kompanijaProdavca>
+      <imeKompanije>VISER</imeKompanije>
+      <adresa>Adresa</adresa>
+    </kompanijaProdavca>
+    <emailProdavca tip ="privatni">bokis97@live.com</emailProdavca>
+  </aritakl>
+  <aritakl>
+    <naziv sifra ="2">Motor</naziv>
+    <datumIzrade>
+      <dan>14</dan>
+      <mesec>12</mesec>
+      <godina>2018</godina>
+    </datumIzrade>
+    <cena tip ="dinar">200000</cena>
+    <kompanijaProdavca>
+      <imeKompanije>VISER</imeKompanije>
+      <adresa>Adresa</adresa>
+    </kompanijaProdavca>
+    <emailProdavca tip ="privatni">bokis97@live.com</emailProdavca>
+    <emailProdavca tip ="sluzbeni">bojannrt417@viser.com</emailProdavca>
+  </aritakl>
+</magacin>
