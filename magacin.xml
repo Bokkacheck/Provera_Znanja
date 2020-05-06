@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE magacin SYSTEM "magacin.dtd">
 <magacin>
-  <aritakl>
-    <naziv sifra ="1">Automobil</naziv>
+  <artikal>
+    <naziv sifra ="p1">Automobil</naziv>
     <datumIzrade>
       <dan>14</dan>
       <mesec>12</mesec>
@@ -13,9 +14,9 @@
       <adresa>Adresa</adresa>
     </kompanijaProdavca>
     <emailProdavca tip ="privatni">bokis97@live.com</emailProdavca>
-  </aritakl>
-  <aritakl>
-    <naziv sifra ="2">Motor</naziv>
+  </artikal>
+  <artikal>
+    <naziv sifra ="p2">Motor</naziv>
     <datumIzrade>
       <dan>14</dan>
       <mesec>12</mesec>
@@ -28,5 +29,5 @@
     </kompanijaProdavca>
     <emailProdavca tip ="privatni">bokis97@live.com</emailProdavca>
     <emailProdavca tip ="sluzbeni">bojannrt417@viser.com</emailProdavca>
-  </aritakl>
+  </artikal>
 </magacin>
