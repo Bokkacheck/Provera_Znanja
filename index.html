@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Artikli</h1>
+    <br>
+    Ime kompanije: <input type="text" id="imeKompanijePrikaz">
+    <button onclick="PrikaziArtikle()">Prikazi arikle</button>
+    <div id="prikaz"></div>
+    <h2>Dodavanje artikla</h2>
+    <div>
+        Id: <input type="number" id="id"> <br><br>
+        Naziv: <input type="text" id="naziv"> <br><br>
+        Cena: <input type="number" id="cena"> <br><br>
+        Ime kompanije: <input type="text" id="imeKompanije"> <br><br>
+        <button onclick="Dodaj()">Dodaj novi artikal</button>
+    </div>
+    <h2>Izmena kompanije</h2>
+    <div>
+        Id za izmenu: <input type="number" id="idIzmena"> <br><br>
+        Nov naziv: <input type="text" id="nazivIzmena"> <br><br>
+        Nova cena: <input type="number" id="cenaIzmena"> <br><br>
+        Novo ime kompanije: <input type="text" id="imeKompanijeIzmena"> <br><br>
+        <button onclick="IzmeniImeKompanije()">Izmeni ime kompanije</button>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        function Prikaz(response) {
+            let txt = "<br>";
+            for (let i = 0; i < response.length; i++) {
+                txt += `<div>${response[i].id} ${response[i].naziv} ${response[i].cena} ${response[i].imeKompanije}   <button onclick = Obrisi(${response[i].id})>Obrisi</button></div><br>`
+            }
+            $("#prikaz").html(txt);
+        }
+        function PrikaziArtikle() {
+            $.ajax({
+                url: "/sviArtikli",
+                method: "GET",
+                data: { imeKompanije: $("#imeKompanijePrikaz").val() },
+                dataType: "JSON",
+                success: (response) => {
+                    Prikaz(response)
+                }
+            })
+        }
+        function Obrisi(idArtikla) {
+            $.ajax({
+                url: "/obrisiArtikal",
+                method: "POST",
+                data: { id: idArtikla },
+                dataType: "JSON",
+                success: (response) => {
+                    Prikaz(response)
+                }
+            })
+        }
+        function Dodaj() {
+            $.ajax({
+                url: "/dodajArtikal",
+                method: "POST",
+                data: { id: $("#id").val(), naziv: $("#naziv").val(), cena: $("#cena").val(), imeKompanije: $("#imeKompanije").val() },
+                dataType: "JSON",
+                success: (response) => {
+                    if(response=="greska"){
+                        alert("Vec postoji artikal sa tim ID-em");
+                    }else{
+                        Prikaz(response)
+                    }
+                }
+            })
+        }
+        function IzmeniImeKompanije() {
+            $.ajax({
+                url: "/izmeniArtikal",
+                method: "POST",
+                data: { id: $("#idIzmena").val(),naziv: $("#nazivIzmena").val(), cena: $("#cenaIzmena").val(), imeKompanije: $("#imeKompanijeIzmena").val() },
+                dataType: "JSON",
+                success: (response) => {
+                    if(response=="greska"){
+                        alert("Nije pronadjen artikal sa unetim ID-em");
+                    }else{
+                        Prikaz(response)
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
