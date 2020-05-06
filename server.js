@@ -7,15 +7,16 @@ let server = http.createServer((req, res) => {
     let q = url.parse(req.url, true, false);
     console.log("Request-> " + q.pathname);
     if (req.method == "GET") {
-        if (q.pathname == "/") {
+        if (q.pathname == "/") {                            //Pocetna ruta
             res.writeHead(200);
             res.end(fs.readFileSync("index.html"))
         }
-        else if (q.pathname == '/sviArtikli') {
-            if (q.query.imeKompanije == "") {
+        else if (q.pathname == '/sviArtikli') {                                             //sviArtikli
+            let artikliRes = artikli.filter(a => a.imeKompanije == q.query.imeKompanije)
+            if (artikliRes.length == 0) {
                 res.end(JSON.stringify(artikli))
             } else {
-                res.end(JSON.stringify(artikli.filter(a => a.imeKompanije == q.query.imeKompanije)))
+                res.end(JSON.stringify(artikliRes))
             }
         }
     } else if (req.method == "POST") {
@@ -33,7 +34,7 @@ function HandleRequest(req, res) {
 }
 function PostRoutes(req, res, data) {
     let q = url.parse(req.url, true, false);
-    if (q.pathname == '/dodajArtikal') {
+    if (q.pathname == '/dodajArtikal') {                            //dodajArtikal
         if(artikli.find(a=>a.id==data.id)==undefined){
             artikli.push(data);
             res.end(JSON.stringify(artikli))
@@ -42,10 +43,10 @@ function PostRoutes(req, res, data) {
             return;
         }
     }
-    else if (q.pathname == '/obrisiArtikal') {
+    else if (q.pathname == '/obrisiArtikal') {                      //obrisiArtikal
         artikli = artikli.filter(a => a.id != data.id)
         res.end(JSON.stringify(artikli))
-    } else if (q.pathname == '/izmeniArtikal') {
+    } else if (q.pathname == '/izmeniArtikal') {                    //izmeniArtiakl
         artikal = artikli.find(a => a.id == data.id)
         if(artikal==undefined){
             res.end(JSON.stringify("greska"))
