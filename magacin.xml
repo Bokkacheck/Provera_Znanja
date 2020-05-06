@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE magacin SYSTEM "magacin.dtd">
-<magacin>
+<magacin
+xmlns="http://www.w3schools.com"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.w3schools.com magacin.xsd">
   <artikal>
     <naziv sifra ="p1">Automobil</naziv>
     <datumIzrade>
@@ -13,7 +16,7 @@
       <imeKompanije>VISER</imeKompanije>
       <adresa>Adresa</adresa>
     </kompanijaProdavca>
-    <emailProdavca tip ="privatni">bokis97@live.com</emailProdavca>
+    <emailProdavca tip ="privatni">Bois97@live.com</emailProdavca>
   </artikal>
   <artikal>
     <naziv sifra ="p2">Motor</naziv>
@@ -27,7 +30,7 @@
       <imeKompanije>VISER</imeKompanije>
       <adresa>Adresa</adresa>
     </kompanijaProdavca>
-    <emailProdavca tip ="privatni">bokis97@live.com</emailProdavca>
-    <emailProdavca tip ="sluzbeni">bojannrt417@viser.com</emailProdavca>
+    <emailProdavca tip ="privatni">bokIs97@live.com</emailProdavca>
+    <emailProdavca tip ="sluzbeni">bojAnnrt417@viser.com</emailProdavca>
   </artikal>
 </magacin>
